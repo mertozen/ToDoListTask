@@ -48,3 +48,26 @@ React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması gelişt
 - Kurulum ve çalıştırma adımlarını açıklayan bir dökümantasyon ekleyin.  
   **[OPSİYONEL]** Ayrıntılı dökümantasyon yerine tüm servislerin `docker-compose up` ile ayağa kalkacağı şekilde konfigürasyon yapabilirsiniz.
 - Projenizi paketlenmiş dosya ya da GitHub üzerinden paylaşın.
+
+# To-Do List Uygulaması Mockup Görselleri
+
+![To-Do Uygulaması Mockup Görselleri](mockups.png)
+
+## Ekran Açıklamaları
+
+1. **Ana Ekran (Dashboard)**  
+   - Sol panelde tüm yapılacaklar listeleri  
+   - Sağ panelde seçili listenin genel görünümü  
+
+2. **Liste Detayı**  
+   - Her bir görevin adı, açıklaması, bitiş tarihi ve durumu  
+   - Görevler arası bağımlılık okları  
+
+3. **Filtre ve Sıralama**  
+   - Duruma (Tamamlandı/Tamamlanmadı), ada veya süresi dolmuş olup olmamasına göre filtre  
+   - Oluşturulma tarihi, bitiş tarihi, ada veya duruma göre sıralama  
+
+4. **Yeni Görev Ekleme Modalı**  
+   - Görev adı, açıklama, bitiş tarihi ve durum seçeneği  
+   - “Ekle” ve “İptal” butonları  
+
