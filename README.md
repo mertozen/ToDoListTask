@@ -39,14 +39,14 @@ React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması gelişt
 - **Yapılacak maddesini listeden silme**
 
 ## Genel Beklentiler
-
+- Projenin bütün detayları sorulacak o yüzden bütün detayları öğrenerek geliştirmeleri yapın.
 - Projenizin hiçbir ek bağımlılık olmadan kolayca çalıştırılabilir olması.
 - HTML, CSS ve JS kütüphaneleri olarak Tailwind kullanabilirsiniz.
 - Ön yüzde tercih ettiğiniz paket yöneticisini kullanın.
 - En az 3 birim testi (unit test) yazın.
 - ChatGPT tarafından üretilmiş kodları kullanmayın; denetlenecektir.
 - Kurulum ve çalıştırma adımlarını açıklayan bir dökümantasyon ekleyin.  
-  **[OPSİYONEL]** Ayrıntılı dökümantasyon yerine tüm servislerin `docker-compose up` ile ayağa kalkacağı şekilde konfigürasyon yapabilirsiniz.
+  **[OPSİYONEL]** Vercel'e yükleyin
 - Projenizi paketlenmiş dosya ya da GitHub üzerinden paylaşın.
 
 # To-Do List Uygulaması Mockup Görselleri
