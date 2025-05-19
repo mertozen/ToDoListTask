@@ -1,6 +1,8 @@
 # Yapılacaklar Listesi Uygulaması
 
-React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması geliştirmeniz bekleniyor. Veriler React içinde statik olarak saklanacaktır.
+# To-Do List Frontend (React yada NextJs)
+
+React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması geliştirmeniz bekleniyor. Veriler React içinde statik olarak saklanacaktır. Not: (Eğer full-stack taskı ise backend ile etkileşimlik olacak)
 
 ## Beklenen Özellikler
 
@@ -44,6 +46,7 @@ React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması gelişt
 - HTML, CSS ve JS kütüphaneleri olarak Tailwind kullanabilirsiniz.
 - Ön yüzde tercih ettiğiniz paket yöneticisini kullanın.
 - En az 3 birim testi (unit test) yazın.
+- Fake Server kullanarak uygulamayı entegre et (https://github.com/typicode/json-server)
 - ChatGPT tarafından üretilmiş kodları kullanmayın; denetlenecektir.
 - Kurulum ve çalıştırma adımlarını açıklayan bir dökümantasyon ekleyin.  
   **[OPSİYONEL]** Vercel'e yükleyin
@@ -69,5 +72,52 @@ React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması gelişt
 
 4. **Yeni Görev Ekleme Modalı**  
    - Görev adı, açıklama, bitiş tarihi ve durum seçeneği  
-   - “Ekle” ve “İptal” butonları  
+   - “Ekle” ve “İptal” butonları
 
+# To-Do List Backend (FastAPI + SQLite)
+
+## Görev Tanımı
+
+**To-Do List** uygulamasının sunucu tarafı (backend) kodunu **FastAPI** ve **SQLite** kullanarak geliştirmeniz bekleniyor. Uygulama, frontend’den gönderilecek RESTful API isteklerini karşılayacak; listeler ve bu listelere ait görevler üzerinde CRUD (Create, Read, Update, Delete) işlemlerini ve görevler arası bağımlılık kontrolünü sağlayacaktır.
+
+---
+
+## Teknik Gereksinimler
+
+- Python 3.9+
+- FastAPI
+- SQLite (dosya tabanlı veritabanı)
+- SQLAlchemy veya SQLModel
+- Alembic (isteğe bağlı, migration için)
+- pytest ile en az **3 birim testi**
+- Docker-compose haline getir yada vercel'e yükle
+
+---
+
+## Özellikler ve API Endpoints
+
+### 1. To-Do Listeleri Yönetimi
+
+| Method | Path             | Açıklama                              | Request Body               | Response Body                  |
+|--------|------------------|---------------------------------------|----------------------------|--------------------------------|
+| GET    | `/lists`         | Tüm listeleri getirir                 | —                          | `[ { "id": 1, "name": "Alışveriş" }, … ]` |
+| POST   | `/lists`         | Yeni liste oluşturur                  | `{ "name": "Proje" }`      | `{ "id": 2, "name": "Proje" }`  |
+| DELETE | `/lists/{list_id}` | Belirli bir listeyi siler           | —                          | `{ "detail": "Silindi" }`      |
+
+### 2. Görev (To-Do Item) Yönetimi
+
+| Method | Path                                         | Açıklama                                                | Request Body                                                           | Response Body                                                                                   |
+|--------|----------------------------------------------|---------------------------------------------------------|------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| GET    | `/lists/{list_id}/items`                     | Bir listedeki tüm görevleri getirir                     | Query Params: `status`, `name`, `expired` (bool), `order_by`          | `[ { "id": 1, "name": "...", "status": "PENDING", … }, … ]`                                      |
+| POST   | `/lists/{list_id}/items`                     | Yeni görev ekler                                        | `{ "name": "...", "description": "...", "deadline": "2025-06-01", "status": "PENDING" }` | `{ "id": 5, "name": "...", … }`                                                               |
+| PATCH  | `/items/{item_id}/complete`                  | Görevi tamamlandı olarak işaretler (bağımlılık kontrolü) | —                                                                      | `{ "id": 5, "status": "COMPLETED" }`                                                            |
+| DELETE | `/items/{item_id}`                           | Belirli bir görevi siler                                | —                                                                      | `{ "detail": "Silindi" }`                                                                      |
+
+### 3. Bağımlılık Yönetimi
+
+| Method | Path                                      | Açıklama                                        | Request Body                       | Response Body                                                         |
+|--------|-------------------------------------------|-------------------------------------------------|------------------------------------|-----------------------------------------------------------------------|
+| POST   | `/items/{item_id}/dependencies`           | Bir görevin başka bir göreve bağımlı olmasını ekler | `{ "depends_on_id": 3 }`           | `{ "item_id": 5, "depends_on": 3 }`                                   |
+| GET    | `/items/{item_id}/dependencies`           | Görevin tüm bağımlılıklarını listeler           | —                                  | `[ { "depends_on_id": 3 }, … ]`                                       |
+
+---
