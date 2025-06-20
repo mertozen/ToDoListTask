@@ -43,7 +43,7 @@ React kullanarak tek sayfa halinde bir yapılacaklar listesi uygulaması gelişt
 ## Genel Beklentiler
 - Projenin bütün detayları sorulacak o yüzden bütün detayları öğrenerek geliştirmeleri yapın.
 - Projenizin hiçbir ek bağımlılık olmadan kolayca çalıştırılabilir olması.
-- HTML, CSS ve JS kütüphaneleri olarak Tailwind kullanabilirsiniz.
+- React TypeScript Ya da Next.js kütüphaneleri olarak Tailwind kullanabilirsiniz.
 - Ön yüzde tercih ettiğiniz paket yöneticisini kullanın.
 - En az 3 birim testi (unit test) yazın.
 - Fake Server kullanarak uygulamayı entegre et (https://github.com/typicode/json-server)
